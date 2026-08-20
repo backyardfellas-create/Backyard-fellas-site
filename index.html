@@ -34,9 +34,15 @@
     .phone:hover{background:#ffc14d}
     .menu{display:none;background:none;border:0;color:#fff;font-size:30px;cursor:pointer}
 
-    .hero{min-height:820px;margin-top:92px;display:flex;align-items:center;background:
-      linear-gradient(rgba(0,0,0,.63),rgba(0,0,0,.68)),
-      url(Background.jpeg) center/cover}
+    .hero {
+  min-height: clamp(600px, 85vh, 820px);
+  margin-top: 92px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(rgba(0,0,0,.63), rgba(0,0,0,.68)),
+    url("background.jpg") center center / cover no-repeat;
+}
     .hero-inner{padding:80px 0;color:#fff;max-width:900px}
     .badge{display:inline-block;border:1px solid var(--green);border-radius:30px;padding:8px 20px;color:#fff;background:rgba(10,30,24,.55);font-weight:800;letter-spacing:1.2px;margin-bottom:25px}
     .badge::before{content:"⌖";color:var(--gold);margin-right:10px}
@@ -118,7 +124,7 @@
     }
     @media(max-width:600px){
       .nav{height:78px}.logo{width:58px;height:58px}.brand-text strong{font-size:17px}.brand-text span{font-size:10px}
-      .hero{margin-top:78px;min-height:720px}.hero-inner{padding:60px 0}.hero p{font-size:18px}
+      .hero{margin-top:78px;min-height:80vh;background-position:center center}.hero-inner{padding:60px 0}.hero p{font-size:18px}
       h1{font-size:40px}.cards,.gallery{grid-template-columns:1fr}
       section{padding:70px 0}.about-photo{min-height:330px}
       .btn{width:100%}
