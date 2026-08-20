@@ -3,106 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Backyard Fellas</title>
+  <meta name="description" content="Backyard Fellas — landscaping, carpentry and groundwork services across Devon, Cornwall and the South West." />
+  <title>Backyard Fellas | Landscape Company</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-      text-align: center;
+    :root{
+      --green:#08784f;
+      --green-dark:#05583b;
+      --gold:#f7a91b;
+      --dark:#181818;
+      --text:#242424;
+      --light:#f5f5f2;
+      --white:#fff;
+      --max:1180px;
     }
-    header {
-      background: #2e7d32;
-      color: white;
-      padding: 20px;
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--light);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),92%);margin:auto}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(24,24,24,.97);border-bottom:4px solid var(--green);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .nav{height:92px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{width:70px;height:70px;border-radius:8px;background:#fff;padding:4px;object-fit:contain}
+    .brand-text strong{display:block;color:#fff;font-family:Georgia,serif;font-size:23px;letter-spacing:.4px}
+    .brand-text span{display:block;color:var(--gold);font-size:14px;font-weight:700;letter-spacing:2px;margin-top:2px}
+    nav{display:flex;align-items:center;gap:34px}
+    nav a{color:#fff;font-weight:700;letter-spacing:.4px;transition:.2s}
+    nav a:hover{color:var(--gold)}
+    .phone{background:var(--gold);color:#151515;padding:16px 25px;border-radius:8px;font-weight:800;white-space:nowrap}
+    .phone:hover{background:#ffc14d}
+    .menu{display:none;background:none;border:0;color:#fff;font-size:30px;cursor:pointer}
+
+    .hero{min-height:820px;margin-top:92px;display:flex;align-items:center;background:
+      linear-gradient(rgba(0,0,0,.63),rgba(0,0,0,.68)),
+      url("https://images.unsplash.com/photo-1558521958-0a228e77e984?auto=format&fit=crop&w=2000&q=85") center/cover}
+    .hero-inner{padding:80px 0;color:#fff;max-width:900px}
+    .badge{display:inline-block;border:1px solid var(--green);border-radius:30px;padding:8px 20px;color:#fff;background:rgba(10,30,24,.55);font-weight:800;letter-spacing:1.2px;margin-bottom:25px}
+    .badge::before{content:"⌖";color:var(--gold);margin-right:10px}
+    h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,72px);line-height:1.08;margin:0 0 25px;text-transform:uppercase}
+    .accent{width:120px;height:7px;background:var(--green);border-radius:10px;margin:0 0 28px}
+    .hero p{font-size:21px;max-width:850px;margin:0 0 32px}
+    .buttons{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:18px 35px;border-radius:7px;font-weight:800;font-size:18px;border:2px solid var(--gold)}
+    .btn-gold{background:var(--gold);color:#161616}
+    .btn-outline{color:#fff;background:rgba(0,0,0,.15)}
+    .btn:hover{transform:translateY(-2px)}
+
+    section{padding:95px 0}
+    .section-head{text-align:center;max-width:750px;margin:0 auto 50px}
+    .eyebrow{color:var(--green);font-weight:900;letter-spacing:2px;text-transform:uppercase}
+    h2{font-family:Georgia,serif;font-size:clamp(34px,4vw,50px);line-height:1.15;margin:8px 0 14px}
+    .section-head p{font-size:18px;color:#666}
+
+    .about{background:#fff}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about-photo{min-height:480px;border-radius:14px;background:
+      linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),
+      url("https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=85") center/cover}
+    .about-copy h2{text-align:left}
+    .ticks{padding:0;margin:25px 0;list-style:none}
+    .ticks li{margin:12px 0;font-weight:700}
+    .ticks li::before{content:"✓";display:inline-grid;place-items:center;width:25px;height:25px;background:var(--green);color:#fff;border-radius:50%;margin-right:10px}
+
+    .services{background:#f0f1ed}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.08);transition:.25s}
+    .card:hover{transform:translateY(-7px)}
+    .card-image{height:190px;background-size:cover;background-position:center}
+    .card-body{padding:24px}
+    .card h3{font-family:Georgia,serif;font-size:25px;margin:0 0 8px}
+    .card p{color:#666;margin:0}
+
+    .work{background:#fff}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{position:relative;min-height:300px;border-radius:12px;overflow:hidden;background-size:cover;background-position:center}
+    .project::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.8))}
+    .project-info{position:absolute;bottom:0;left:0;right:0;padding:25px;color:#fff;z-index:2}
+    .project-info h3{font-family:Georgia,serif;font-size:27px;margin:0}
+    .project-info span{color:#ddd}
+
+    .why{background:var(--dark);color:#fff}
+    .why .section-head p{color:#bbb}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .why-box{padding:35px;border:1px solid #333;border-radius:12px;background:#202020}
+    .why-icon{font-size:35px;color:var(--gold)}
+    .why-box h3{font-family:Georgia,serif;font-size:25px;margin:8px 0}
+    .why-box p{color:#bbb}
+
+    .contact{background:#fff}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+    .contact-box{background:#f4f4f1;border-radius:14px;padding:35px}
+    .contact-row{display:flex;gap:16px;align-items:flex-start;margin:22px 0}
+    .contact-icon{font-size:24px;color:var(--green);width:32px}
+    .contact-row strong{display:block;font-size:18px}
+    .contact-row a{color:var(--green);font-weight:700}
+    form{display:grid;gap:14px}
+    input,textarea{width:100%;padding:15px;border:1px solid #ccc;border-radius:7px;font:inherit}
+    textarea{min-height:140px;resize:vertical}
+    button{cursor:pointer;border:0}
+
+    footer{background:#101010;color:#aaa;text-align:center;padding:30px 0}
+    footer strong{color:#fff}
+
+    @media(max-width:900px){
+      nav{position:absolute;top:92px;left:0;right:0;background:#181818;display:none;flex-direction:column;align-items:stretch;padding:20px 5%;gap:0}
+      nav.open{display:flex}
+      nav a{padding:15px 0;border-bottom:1px solid #333}
+      .menu{display:block}
+      .phone{display:none}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .about-grid,.contact-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .why-grid{grid-template-columns:1fr}
     }
-    header img {
-      max-width: 180px;
-    }
-    h1 {
-      margin: 10px 0 0;
-    }
-    h2 {
-      color: #2e7d32;
-    }
-    section {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    footer {
-      background: #333;
-      color: white;
-      padding: 15px;
-    }
-    a {
-      color: #2e7d32;
-      text-decoration: none;
-    }
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-    .service {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: 250px;
+    @media(max-width:600px){
+      .nav{height:78px}.logo{width:58px;height:58px}.brand-text strong{font-size:17px}.brand-text span{font-size:10px}
+      .hero{margin-top:78px;min-height:720px}.hero-inner{padding:60px 0}.hero p{font-size:18px}
+      h1{font-size:40px}.cards,.gallery{grid-template-columns:1fr}
+      section{padding:70px 0}.about-photo{min-height:330px}
+      .btn{width:100%}
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Backyard Fellas Logo" />
-    <h1>Backyard Fellas</h1>
-    <p><em>Your yard, our craft</em></p>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Backyard Fellas home">
+        <img class="logo" src="logo.png" alt="Backyard Fellas logo">
+        <div class="brand-text">
+          <strong>BACKYARD FELLAS</strong>
+          <span>LANDSCAPE COMPANY</span>
+        </div>
+      </a>
+      <button class="menu" aria-label="Open menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+      <nav>
+        <a href="#home">HOME</a>
+        <a href="#work">OUR WORK</a>
+        <a href="#services">OUR SERVICES</a>
+        <a href="#about">ABOUT US</a>
+        <a href="#contact">CONTACT US</a>
+      </nav>
+      <a class="phone" href="tel:07497104919">☎ &nbsp;07497 104919</a>
+    </div>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>At Backyard Fellas, we’re just a hardworking bunch who love what we do. Based in Devon and Cornwall, 
-    we take pride in transforming outdoor spaces with care, skill, and attention to detail. From patios and 
-    fencing to full garden makeovers, no job is too big or too small.</p>
-  </section>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="badge">COVERAGE AREA: SOUTH WEST OF ENGLAND</div>
+        <h1>Quality Carpentry, Landscaping &amp; Groundwork Services Across The South West</h1>
+        <div class="accent"></div>
+        <p>Backyard Fellas provides professional carpentry, landscaping, and groundwork solutions tailored to transform your outdoor space.</p>
+        <div class="buttons">
+          <a class="btn btn-gold" href="#contact">GET A FREE QUOTE &nbsp; →</a>
+          <a class="btn btn-outline" href="tel:07497104919">☎ &nbsp; CALL NOW</a>
+        </div>
+      </div>
+    </section>
 
-  <section>
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Landscaping</h3>
-        <p>Custom designs to bring your garden to life.</p>
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-photo"></div>
+        <div class="about-copy">
+          <div class="eyebrow">About Backyard Fellas</div>
+          <h2>Your Outdoor Space. Our Craft.</h2>
+          <p>We're a hardworking local team serving Devon, Cornwall and the wider South West. From a new patio or fence to major groundwork and complete garden transformations, we focus on quality workmanship and a finish we're proud of.</p>
+          <ul class="ticks">
+            <li>Professional, reliable workmanship</li>
+            <li>Free quotes and friendly advice</li>
+            <li>Landscaping, carpentry &amp; groundworks</li>
+            <li>Small jobs and full transformations</li>
+          </ul>
+          <a class="btn btn-gold" href="#contact">TALK TO THE TEAM →</a>
+        </div>
       </div>
-      <div class="service">
-        <h3>Groundworks</h3>
-        <p>Strong foundations for every outdoor project.</p>
-      </div>
-      <div class="service">
-        <h3>Patios</h3>
-        <p>Durable, stylish patios for relaxing and entertaining.</p>
-      </div>
-      <div class="service">
-        <h3>Fencing</h3>
-        <p>Quality fences for privacy, security, and style.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Contact Us</h2>
-    <p><strong>Phone:</strong> 07497 104919</p>
-    <p><strong>Email:</strong> <a href="mailto:backyardfellas@gmail.com">backyardfellas@gmail.com</a></p>
-    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/backyardfellas?igsh=MTNoaGFyZXhxMWdvbQ%3D%3D&utm_source=qr" target="_blank">instagram.com/backyardfellas</a></p>
-    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/1Cos8HYCPi/?mibextid=wwXIfr" target="_blank">facebook.com/backyardfellas</a></p>
-    <p><strong>Location:</strong> Devon and Cornwall</p>
-  </section>
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What We Do</div>
+          <h2>Our Services</h2>
+          <p>Practical, durable and great-looking outdoor work, built around what you need.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=85')"></div>
+            <div class="card-body"><h3>Landscaping</h3><p>Garden transformations, planting, lawns, paths and outdoor spaces designed around you.</p></div>
+          </article>
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1590644365607-1c5a2c0b3b0b?auto=format&fit=crop&w=900&q=85')"></div>
+            <div class="card-body"><h3>Groundworks</h3><p>Reliable preparation, drainage, foundations, excavation and groundwork for outdoor projects.</p></div>
+          </article>
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=900&q=85')"></div>
+            <div class="card-body"><h3>Patios</h3><p>Durable patios and paving areas built for relaxing, entertaining and everyday use.</p></div>
+          </article>
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1581578017427-4c0e7e5b5c1a?auto=format&fit=crop&w=900&q=85')"></div>
+            <div class="card-body"><h3>Fencing</h3><p>Quality fencing for privacy, security, boundaries and a smart finished garden.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Work</div>
+          <h2>Recent Projects</h2>
+          <p>Add your own project photos here so customers can see the quality of your work.</p>
+        </div>
+        <div class="gallery">
+          <article class="project" style="background-image:url('https://images.unsplash.com/photo-1558521958-0a228e77e984?auto=format&fit=crop&w=1000&q=85')"><div class="project-info"><h3>Garden Transformation</h3><span>Landscaping &amp; groundwork</span></div></article>
+          <article class="project" style="background-image:url('https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1000&q=85')"><div class="project-info"><h3>Patio Project</h3><span>Paving &amp; landscaping</span></div></article>
+          <article class="project" style="background-image:url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1000&q=85')"><div class="project-info"><h3>Garden Landscaping</h3><span>Outdoor makeover</span></div></article>
+          <article class="project" style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85')"><div class="project-info"><h3>Carpentry</h3><span>Outdoor carpentry</span></div></article>
+          <article class="project" style="background-image:url('https://images.unsplash.com/photo-1599629954294-14df9f829e55?auto=format&fit=crop&w=1000&q=85')"><div class="project-info"><h3>Fencing</h3><span>New boundary fencing</span></div></article>
+          <article class="project" style="background-image:url('https://images.unsplash.com/photo-1591825729269-caeb344f6df2?auto=format&fit=crop&w=1000&q=85')"><div class="project-info"><h3>Groundworks</h3><span>Site preparation</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Why Choose Us</div>
+          <h2>Built Properly. Finished Properly.</h2>
+          <p>We care about the details that make an outdoor project last.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-box"><div class="why-icon">★</div><h3>Quality Work</h3><p>We take pride in solid workmanship and clean, professional finishes.</p></div>
+          <div class="why-box"><div class="why-icon">✓</div><h3>Reliable Service</h3><p>Clear communication, straightforward quotes and a team you can trust.</p></div>
+          <div class="why-box"><div class="why-icon">◆</div><h3>Built For You</h3><p>Every project is tailored to your property, budget and plans.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Get In Touch</div>
+          <h2>Ready To Transform Your Garden?</h2>
+          <p>Call, email or send an enquiry for a free quote.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-box">
+            <div class="contact-row"><div class="contact-icon">☎</div><div><strong>Phone</strong><a href="tel:07497104919">07497 104919</a></div></div>
+            <div class="contact-row"><div class="contact-icon">✉</div><div><strong>Email</strong><a href="mailto:backyardfellas@gmail.com">backyardfellas@gmail.com</a></div></div>
+            <div class="contact-row"><div class="contact-icon">◎</div><div><strong>Instagram</strong><a href="https://www.instagram.com/backyardfellas" target="_blank" rel="noopener">@backyardfellas</a></div></div>
+            <div class="contact-row"><div class="contact-icon">f</div><div><strong>Facebook</strong><a href="https://www.facebook.com/" target="_blank" rel="noopener">Backyard Fellas</a></div></div>
+            <div class="contact-row"><div class="contact-icon">⌖</div><div><strong>Coverage</strong>Devon, Cornwall &amp; the South West</div></div>
+          </div>
+          <div class="contact-box">
+            <form action="mailto:backyardfellas@gmail.com" method="post" enctype="text/plain">
+              <input name="Name" placeholder="Your name" required>
+              <input name="Phone" placeholder="Phone number">
+              <input name="Email" type="email" placeholder="Email address" required>
+              <textarea name="Message" placeholder="Tell us about your project..." required></textarea>
+              <button class="btn btn-gold" type="submit">SEND ENQUIRY →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Backyard Fellas. All rights reserved.</p>
+    <div class="container"><strong>BACKYARD FELLAS</strong> · Landscaping, Carpentry &amp; Groundworks · Devon &amp; Cornwall<br><small>© 2026 Backyard Fellas. All rights reserved.</small></div>
   </footer>
 </body>
 </html>
